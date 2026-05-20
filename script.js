@@ -103,10 +103,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const quranSection = document.getElementById('quran-section');
     if(quranSection) quranObs.observe(quranSection);
 
-    // --- 7. LOGIKA TIMER HITUNG MUNDUR (JANUARI 2026) ---
-    const wed = new Date(2026, 0, 27, 8, 0, 0).getTime(); 
+    // --- 7. LOGIKA TIMER HITUNG MUNDUR ---
+    // Diatur ke tahun 2027 biar timernya tidak minus
+    const wed = new Date(2027, 0, 27, 8, 0, 0).getTime(); 
     setInterval(() => {
-        const d = wed - new Date().getTime();
+        const now = new Date().getTime();
+        const d = wed - now;
+
+        // Kunci agar tidak minus jika tanggal lewat
+        if (d < 0) {
+            document.getElementById("hari").innerText = "00";
+            document.getElementById("jam").innerText = "00";
+            document.getElementById("menit").innerText = "00";
+            document.getElementById("detik").innerText = "00";
+            return;
+        }
+
         document.getElementById("hari").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
         document.getElementById("jam").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         document.getElementById("menit").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
