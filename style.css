@@ -38,9 +38,9 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 }
 .video-box { 
     width: 100%; 
-    aspect-ratio: 2 / 3; /* Bikin otomatis Kotak Sempurna */
+    aspect-ratio: 3 / 5; /* Bikin otomatis Kotak Sempurna */
     height: auto; 
-    border-radius: 5px; 
+    border-radius: 3px; 
     overflow: hidden; 
     border: 1px solid #e2e2e2; 
     background: transparent; /* Hilangkan hitam */
@@ -61,7 +61,7 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .time-box { 
     background-color: #1a2a3a; 
     color: white; 
-    border-radius: 5px; 
+    border-radius: 2px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
