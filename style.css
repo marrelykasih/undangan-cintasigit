@@ -5,7 +5,7 @@ body { font-family: 'Montserrat', sans-serif; background-color: #e5e5e5; display
 
 /* TYPOGRAPHY */
 .main-names-small { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; font-weight: normal; }
-.title-label { font-family: 'Great Vibes', cursive; font-size: 2.2rem; margin-bottom: 15px; color: #1a2a3a !important; font-weight: normal; }
+.title-label { font-family: 'Great Vibes', cursive; font-size: 2.2rem; margin-bottom: 20px; color: #1a2a3a !important; font-weight: normal; }
 h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; font-weight: normal; margin-bottom: 25px; }
 
 .full-screen { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
@@ -15,8 +15,8 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .btn { padding: 12px 35px; background: #1a2a3a; color: white; border: 1px solid #1a2a3a; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; }
 .btn:hover { background-color: #fff; color: #1a2a3a; }
 
-/* HERO IMAGE */
-.frame-hero { width: 92%; height: 60vh; max-height: 480px; border-radius: 0; overflow: hidden; border: 2px solid #e2e2e2; margin: 0 auto 20px; box-shadow: none; }
+/* HERO IMAGE (Halaman Setelah Buka Undangan) */
+.frame-hero { width: 92%; height: 65vh; max-height: 520px; border-radius: 0; overflow: hidden; border: 2px solid #e2e2e2; margin: 0 auto 20px; box-shadow: none; }
 .frame-hero img { width: 100%; height: 100%; object-fit: cover; }
 
 .reveal-color { opacity: 0; transform: translateY(30px); transition: all 1s ease-in-out; }
@@ -24,20 +24,22 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .reveal-color img { filter: grayscale(100%); transition: filter 1.5s; }
 .reveal-color.colored img { filter: grayscale(0%); }
 
-/* --- PERBAIKAN VIDEO & TIMER KOTAK (PASTI SEBELAHAN DI HP) --- */
-.video-timer-section { background-color: #ffffff; padding: 60px 15px; }
+/* --- PERBAIKAN: VIDEO & TIMER SATU HALAMAN PENUH (FULL SCREEN) --- */
+.video-timer-section { background-color: #ffffff; }
 .video-timer-wrapper { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* Memaksa rasio 50% kiri, 50% kanan */
+    grid-template-columns: 1.1fr 1fr; /* Sedikit lebih lebar untuk videonya */
     align-items: center; 
+    justify-content: center; 
     gap: 15px; 
-    margin-top: 20px; 
     width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
 }
 .video-box { 
     width: 100%; 
-    height: 240px; 
-    border-radius: 4px; 
+    height: 350px; /* Diperbesar karena full screen */
+    border-radius: 5px; 
     overflow: hidden; 
     border: 1px solid #e2e2e2; 
     background: #000; 
@@ -51,18 +53,18 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .timer-side { 
     width: 100%; 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* Kotak 2x2 */
-    gap: 8px; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
 }
 .time-box { 
     background-color: #1a2a3a; 
     color: white; 
-    padding: 12px 2px; 
-    border-radius: 4px; 
+    padding: 15px 5px; 
+    border-radius: 5px; 
     text-align: center; 
 }
-.time-box span { font-size: 1.1rem; font-weight: bold; }
-.time-box p { font-size: 0.55rem; text-transform: uppercase; margin-top: 3px; letter-spacing: 0.5px; }
+.time-box span { font-size: 1.3rem; font-weight: bold; }
+.time-box p { font-size: 0.6rem; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
 /* ----------------------------------------------------------- */
 
 /* PROFILES */

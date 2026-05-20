@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // PAKSA MAINKAN VIDEO 
+        // PAKSA MAINKAN VIDEO (DITRIGER SAAT TOMBOL DIKLIK)
         if (scrollVideo) {
             let playVideoPromise = scrollVideo.play();
             if (playVideoPromise !== undefined) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('rsvp-form').reset();
     };
 
-    // --- 4. LIGHTBOX GALERI FOTO ---
+    // --- 4. LIGHTBOX UNTUK GALERI FOTO ---
     document.querySelectorAll('.gallery-img, .polaroid img').forEach(img => {
         img.onclick = () => {
             document.getElementById('lightbox-img').src = img.src;
@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('.close-lightbox').onclick = () => document.getElementById('lightbox').classList.remove('show');
 
-    // --- 5. ANIMASI MUNCUL SAAT DI SCROLL ---
+   // --- 5. ANIMASI MUNCUL SAAT DI SCROLL ---
     const obs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) e.target.classList.add('colored'); });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal-color').forEach(el => obs.observe(el));
 
-    // --- 6. PINTU AL-QURAN ---
+    // --- 6. ANIMASI PINTU AL-QURAN ---
     const quranObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const quranSection = document.getElementById('quran-section');
     if(quranSection) quranObs.observe(quranSection);
 
-    // --- 7. LOGIKA HITUNG MUNDUR ---
-    const wed = new Date(2027, 0, 27, 8, 0, 0).getTime(); 
+    // --- 7. LOGIKA TIMER HITUNG MUNDUR (JANUARI 2026) ---
+    const wed = new Date(2026, 0, 27, 8, 0, 0).getTime(); 
     setInterval(() => {
         const d = wed - new Date().getTime();
         document.getElementById("hari").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
