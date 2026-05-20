@@ -5,40 +5,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const guestName = urlParams.get('to');
     if (guestName) document.getElementById('guest-name').innerText = guestName;
 
-    // --- 2. LOGIKA TRIGGER PLAY AUDIO & VIDEO KETIKA TOMBOL DIKLIK ---
+    // --- 2. LOGIKA TRIGGER PLAY AUDIO KETIKA TOMBOL DIKLIK ---
     const btnBuka = document.getElementById('btn-buka');
     const coverScreen = document.getElementById('cover-screen');
     const mainContent = document.getElementById('main-invitation');
-    
     const bgMusic = document.getElementById('bg-music');
-    const scrollVideo = document.getElementById('scroll-video');
 
     btnBuka.addEventListener('click', function() {
         
-        // 1. PAKSA LOAD & MAINKAN LAGU
+        // PAKSA LOAD & MAINKAN LAGU ROMANTIS
         if (bgMusic) {
             bgMusic.volume = 1.0;
-            bgMusic.load(); // Pancing load ulang audio saat diklik
+            bgMusic.load(); // Pancing load ulang audio saat diklik agar tidak diblokir
             
             let playAudioPromise = bgMusic.play();
             if (playAudioPromise !== undefined) {
-                playAudioPromise.then(() => {
-                    console.log("Audio berhasil diputar");
-                }).catch(e => {
-                    console.log("Lagu dicegah browser: " + e);
-                });
+                playAudioPromise.catch(e => console.log("Lagu dicegah auto-play oleh browser: " + e));
             }
         }
 
-        // 2. PAKSA MAINKAN VIDEO (DITRIGER SAAT TOMBOL DIKLIK)
-        if (scrollVideo) {
-            let playVideoPromise = scrollVideo.play();
-            if (playVideoPromise !== undefined) {
-                playVideoPromise.catch(e => console.log("Video dicegah browser: " + e));
-            }
-        }
-
-        // 3. BUKA UNDANGAN DENGAN ANIMASI MENGHILANG
+        // BUKA UNDANGAN DENGAN ANIMASI MENGHILANG
         coverScreen.style.opacity = '0';
         coverScreen.style.transform = 'translateX(-50%) scale(1.03)';
         mainContent.classList.remove('hidden');
@@ -89,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('.close-lightbox').onclick = () => document.getElementById('lightbox').classList.remove('show');
 
-   // --- 5. ANIMASI MUNCUL SAAT DI SCROLL ---
+    // --- 5. ANIMASI MUNCUL SAAT DI SCROLL ---
     const obs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) e.target.classList.add('colored'); });
     }, { threshold: 0.15 });
@@ -109,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const quranSection = document.getElementById('quran-section');
     if(quranSection) quranObs.observe(quranSection);
 
-    // --- 7. LOGIKA TIMER HITUNG MUNDUR ---
-    // Diatur ke tahun 2027 biar timernya tidak minus
-    const wed = new Date(2027, 0, 27, 8, 0, 0).getTime(); 
+    // --- 7. LOGIKA TIMER HITUNG MUNDUR (21 JUNI 2026) ---
+    // Di JavaScript, bulan dimulai dari 0 (Januari = 0, Juni = 5)
+    const wed = new Date(2026, 5, 21, 8, 0, 0).getTime(); 
     setInterval(() => {
         const now = new Date().getTime();
         const d = wed - now;
