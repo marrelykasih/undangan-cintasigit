@@ -28,7 +28,7 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .video-timer-section { background-color: #ffffff; }
 .video-timer-wrapper { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* Rata Kiri-Kanan */
+    grid-template-columns: 2fr 3fr ; /* Rata Kiri-Kanan */
     align-items: center; 
     justify-content: center; 
     gap: 15px; 
@@ -38,7 +38,7 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 }
 .video-box { 
     width: 100%; 
-    aspect-ratio: 1 / 1; /* Bikin otomatis Kotak Sempurna */
+    aspect-ratio: 2 / 3; /* Bikin otomatis Kotak Sempurna */
     height: auto; 
     border-radius: 5px; 
     overflow: hidden; 
