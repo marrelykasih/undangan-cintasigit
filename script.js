@@ -15,24 +15,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     btnBuka.addEventListener('click', function() {
         
-        // PAKSA MAINKAN LAGU ROMANTIS
+        // 1. PAKSA LOAD & MAINKAN LAGU
         if (bgMusic) {
             bgMusic.volume = 1.0;
+            bgMusic.load(); // Pancing load ulang audio saat diklik
+            
             let playAudioPromise = bgMusic.play();
             if (playAudioPromise !== undefined) {
-                playAudioPromise.catch(e => console.log("Lagu dicegah auto-play oleh browser: " + e));
+                playAudioPromise.then(() => {
+                    console.log("Audio berhasil diputar");
+                }).catch(e => {
+                    console.log("Lagu dicegah browser: " + e);
+                });
             }
         }
 
-        // PAKSA MAINKAN VIDEO (DITRIGER SAAT TOMBOL DIKLIK)
+        // 2. PAKSA MAINKAN VIDEO (DITRIGER SAAT TOMBOL DIKLIK)
         if (scrollVideo) {
             let playVideoPromise = scrollVideo.play();
             if (playVideoPromise !== undefined) {
-                playVideoPromise.catch(e => console.log("Video dicegah auto-play oleh browser: " + e));
+                playVideoPromise.catch(e => console.log("Video dicegah browser: " + e));
             }
         }
 
-        // BUKA UNDANGAN DENGAN ANIMASI MENGHILANG
+        // 3. BUKA UNDANGAN DENGAN ANIMASI MENGHILANG
         coverScreen.style.opacity = '0';
         coverScreen.style.transform = 'translateX(-50%) scale(1.03)';
         mainContent.classList.remove('hidden');
