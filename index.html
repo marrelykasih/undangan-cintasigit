@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop preload="auto">
         <source src="lagu-romantis.mp3" type="audio/mpeg">
     </audio>
 
@@ -42,24 +42,26 @@
         <section class="section video-timer-section reveal-color">
             <p class="title-label">Menuju Hari Bahagia</p>
             <div class="video-timer-wrapper">
+                
                 <div class="video-box">
-                    <video id="scroll-video" muted loop playsinline>
+                    <video id="scroll-video" autoplay muted loop playsinline>
                         <source src="hero-video.mp4" type="video/mp4">
                     </video>
                 </div>
+
                 <div class="timer-side">
                     <div class="time-box"><span id="hari">00</span><p>Hari</p></div>
                     <div class="time-box"><span id="jam">00</span><p>Jam</p></div>
                     <div class="time-box"><span id="menit">00</span><p>Menit</p></div>
                     <div class="time-box"><span id="detik">00</span><p>Detik</p></div>
                 </div>
+
             </div>
         </section>
 
         <section class="section quran-verse full-screen" id="quran-section">
             <div class="door door-left"></div>
             <div class="door door-right"></div>
-
             <div class="quran-content">
                 <p class="verse-text">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya..."</p>
                 <span class="verse-reference">Q.S. Ar-Rum: 21</span>
@@ -97,7 +99,6 @@
                 <p class="small-title">Through the years</p>
                 <h2 style="margin-bottom: 0;">Our Story</h2>
             </div>
-            
             <div class="story-container">
                 <div class="story-item reveal-color"><div class="polaroid-wrapper"><div class="polaroid p-left"><img src="story1.jpg"><p>first date 21 juni 2025</p></div></div></div>
                 <div class="story-item reveal-color"><div class="polaroid-wrapper"><div class="polaroid p-right"><img src="story2.jpg"><p>pertama kali ke rumah 27 juni 2025</p></div></div></div>
@@ -117,7 +118,6 @@
                 <h3>Resepsi</h3>
                 <p>Minggu, 27 Januari 2026<br>11.00 WIB - Selesai</p>
             </div>
-
             <div class="card-schedule location-card">
                 <h3>Gedung Pernikahan Impian</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 15px;">Jl. Raya Kenangan Indah No. 123, Bandung, Jawa Barat</p>
@@ -131,24 +131,12 @@
         <section class="section gallery-grid-section reveal-color">
             <h2>Memory Lane</h2>
             <div class="gallery-asymmetric-grid">
-                <div class="gallery-grid-box grid-large">
-                    <img src="galeri1.jpg" class="gallery-img" alt="Gallery 1">
-                </div>
-                <div class="gallery-grid-box grid-small">
-                    <img src="galeri2.jpg" class="gallery-img" alt="Gallery 2">
-                </div>
-                <div class="gallery-grid-box grid-small">
-                    <img src="galeri3.jpg" class="gallery-img" alt="Gallery 3">
-                </div>
-                <div class="gallery-grid-box grid-large">
-                    <img src="galeri4.jpg" class="gallery-img" alt="Gallery 4">
-                </div>
-                <div class="gallery-grid-box grid-small">
-                    <img src="galeri5.jpg" class="gallery-img" alt="Gallery 5">
-                </div>
-                <div class="gallery-grid-box grid-small">
-                    <img src="galeri6.jpg" class="gallery-img" alt="Gallery 6">
-                </div>
+                <div class="gallery-grid-box grid-large"><img src="galeri1.jpg" class="gallery-img"></div>
+                <div class="gallery-grid-box grid-small"><img src="galeri2.jpg" class="gallery-img"></div>
+                <div class="gallery-grid-box grid-small"><img src="galeri3.jpg" class="gallery-img"></div>
+                <div class="gallery-grid-box grid-large"><img src="galeri4.jpg" class="gallery-img"></div>
+                <div class="gallery-grid-box grid-small"><img src="galeri5.jpg" class="gallery-img"></div>
+                <div class="gallery-grid-box grid-small"><img src="galeri6.jpg" class="gallery-img"></div>
             </div>
         </section>
 
@@ -157,7 +145,6 @@
             <form id="rsvp-form" class="form-container">
                 <input type="text" id="nama-rsvp" placeholder="Nama Anda" required>
                 <textarea id="ucapan-rsvp" rows="4" placeholder="Berikan Ucapan & Doa..." required></textarea>
-                
                 <div class="form-row">
                     <select id="kehadiran-rsvp" required>
                         <option value="" disabled selected>Kehadiran</option>
@@ -172,10 +159,8 @@
                         <option value="4">4 Orang</option>
                     </select>
                 </div>
-
                 <button type="button" class="btn btn-rsvp" onclick="kirimRSVP()">Kirim RSVP</button>
             </form>
-
             <div class="wishes-board" id="wishes-board"></div>
         </section>
 
@@ -196,16 +181,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="section video-section full-screen reveal-color">
-            <h2 style="margin-bottom: 35px; text-align: center;">Our Moments</h2>
-            <div class="video-container">
-                <video id="wedding-video" muted loop playsinline>
-                    <source src="video.mp4" type="video/mp4">
-                    Maaf, browser Anda tidak mendukung pemutaran video.
-                </video>
-            </div>
-        </section>
         
         <section class="section closing-section full-screen reveal-color">
             <div class="closing-box">
@@ -219,6 +194,7 @@
     </div>
 
     <div id="lightbox" class="lightbox"><span class="close-lightbox">×</span><img id="lightbox-img" src=""></div>
+    
     <script src="script.js"></script>
 </body>
 </html>

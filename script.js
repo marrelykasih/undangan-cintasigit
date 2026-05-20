@@ -5,24 +5,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const guestName = urlParams.get('to');
     if (guestName) document.getElementById('guest-name').innerText = guestName;
 
-    // --- 2. LOGIKA COVER DEPAN (FIXED & SMOOTH) ---
+    // --- 2. LOGIKA TRIGGER PLAY AUDIO & VIDEO KETIKA TOMBOL DIKLIK ---
     const btnBuka = document.getElementById('btn-buka');
     const coverScreen = document.getElementById('cover-screen');
     const mainContent = document.getElementById('main-invitation');
+    
     const bgMusic = document.getElementById('bg-music');
+    const scrollVideo = document.getElementById('scroll-video');
 
     btnBuka.addEventListener('click', function() {
-        // Mainkan musik latar belakang
-        bgMusic.play().catch(e => console.log("Autoplay musik tertahan browser"));
         
-        // Efek transisi menghilang yang mulus
+        // PAKSA MAINKAN LAGU ROMANTIS
+        if (bgMusic) {
+            bgMusic.volume = 1.0;
+            let playAudioPromise = bgMusic.play();
+            if (playAudioPromise !== undefined) {
+                playAudioPromise.catch(e => console.log("Lagu dicegah auto-play oleh browser: " + e));
+            }
+        }
+
+        // PAKSA MAINKAN VIDEO 
+        if (scrollVideo) {
+            let playVideoPromise = scrollVideo.play();
+            if (playVideoPromise !== undefined) {
+                playVideoPromise.catch(e => console.log("Video dicegah auto-play oleh browser: " + e));
+            }
+        }
+
+        // BUKA UNDANGAN DENGAN ANIMASI MENGHILANG
         coverScreen.style.opacity = '0';
         coverScreen.style.transform = 'translateX(-50%) scale(1.03)';
-        
-        // Buka konten utama undangan
         mainContent.classList.remove('hidden');
         
-        // Bersihkan cover screen dari display setelah animasi selesai
         setTimeout(() => { 
             coverScreen.style.display = 'none'; 
         }, 800);
@@ -60,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('rsvp-form').reset();
     };
 
-    // --- 4. LIGHTBOX ---
+    // --- 4. LIGHTBOX GALERI FOTO ---
     document.querySelectorAll('.gallery-img, .polaroid img').forEach(img => {
         img.onclick = () => {
             document.getElementById('lightbox-img').src = img.src;
@@ -69,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('.close-lightbox').onclick = () => document.getElementById('lightbox').classList.remove('show');
 
-   // --- 5. LOGIKA OBSERVER UMUM ---
+    // --- 5. ANIMASI MUNCUL SAAT DI SCROLL ---
     const obs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) e.target.classList.add('colored'); });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal-color').forEach(el => obs.observe(el));
 
-    // --- 6. LOGIKA KHUSUS PINTU AYAT SUCI ---
+    // --- 6. PINTU AL-QURAN ---
     const quranObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -89,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const quranSection = document.getElementById('quran-section');
     if(quranSection) quranObs.observe(quranSection);
 
-    // --- 7. TIMER ---
+    // --- 7. LOGIKA HITUNG MUNDUR ---
     const wed = new Date(2027, 0, 27, 8, 0, 0).getTime(); 
     setInterval(() => {
         const d = wed - new Date().getTime();
@@ -98,21 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("menit").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
         document.getElementById("detik").innerText = Math.floor((d % (1000 * 60)) / 1000);
     }, 1000);
-
-    // --- 8. AUTOPLAY VIDEO SAAT SCROLL ---
-    const wedVideo = document.getElementById('wedding-video');
-    if (wedVideo) {
-        const vidObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    wedVideo.play().catch(e => console.log("Autoplay video dicegah browser")); 
-                } else {
-                    wedVideo.pause(); 
-                }
-            });
-        }, { threshold: 0.5 });
-        vidObs.observe(document.querySelector('.video-section'));
-    }
 });
 
 function copyRekening(id) {

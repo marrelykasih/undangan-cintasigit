@@ -24,30 +24,54 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .reveal-color img { filter: grayscale(100%); transition: filter 1.5s; }
 .reveal-color.colored img { filter: grayscale(0%); }
 
-/* PROFILES (Super Long Portrait Layout - Sharp Corners) */
-.profile { background-color: #ffffff; color: #1a2a3a; padding: 80px 20px; }
-.profile-content { 
-    position: relative; 
-    z-index: 2; 
-    width: 100%; 
-    display: flex; 
+/* --- PERBAIKAN VIDEO & TIMER KOTAK (PASTI SEBELAHAN DI HP) --- */
+.video-timer-section { background-color: #ffffff; padding: 60px 15px; }
+.video-timer-wrapper { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* Memaksa rasio 50% kiri, 50% kanan */
     align-items: center; 
-    justify-content: center;
-    gap: 20px;
-    padding: 0 5px;
+    gap: 15px; 
+    margin-top: 20px; 
+    width: 100%;
 }
+.video-box { 
+    width: 100%; 
+    height: 240px; 
+    border-radius: 4px; 
+    overflow: hidden; 
+    border: 1px solid #e2e2e2; 
+    background: #000; 
+}
+.video-box video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+}
+.timer-side { 
+    width: 100%; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* Kotak 2x2 */
+    gap: 8px; 
+}
+.time-box { 
+    background-color: #1a2a3a; 
+    color: white; 
+    padding: 12px 2px; 
+    border-radius: 4px; 
+    text-align: center; 
+}
+.time-box span { font-size: 1.1rem; font-weight: bold; }
+.time-box p { font-size: 0.55rem; text-transform: uppercase; margin-top: 3px; letter-spacing: 0.5px; }
+/* ----------------------------------------------------------- */
+
+/* PROFILES */
+.profile { background-color: #ffffff; color: #1a2a3a; padding: 80px 20px; }
+.profile-content { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 0 5px; }
 .bride-bg .profile-content { flex-direction: row; text-align: left; }
 .groom-bg .profile-content { flex-direction: row-reverse; text-align: right; }
 
-.frame-foto { 
-    width: 150px; 
-    height: 320px; 
-    border-radius: 0px; 
-    overflow: hidden; 
-    border: 1px solid #e2e2e2; 
-    box-shadow: none; 
-    flex-shrink: 0; 
-}
+.frame-foto { width: 150px; height: 320px; border-radius: 0px; overflow: hidden; border: 1px solid #e2e2e2; box-shadow: none; flex-shrink: 0; }
 .frame-foto img { width: 100%; height: 100%; object-fit: cover; }
 
 .profile-details { display: flex; flex-direction: column; }
@@ -58,19 +82,11 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .ig-handle { margin-top: 10px; font-size: 0.8rem; text-decoration: none; border: 1px solid #1a2a3a; padding: 6px 16px; border-radius: 20px; color: #1a2a3a; display: inline-block; font-weight: 600; transition: 0.3s; }
 .ig-handle:hover { background-color: #1a2a3a; color: #ffffff; }
 
-/* TIMER SECTION */
-.timer-section { background-color: #ffffff; padding: 40px 20px; }
-.countdown { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-.time-box { background-color: #1a2a3a; color: white; width: 65px; padding: 10px; border-radius: 5px; }
-.time-box span { font-size: 1.4rem; font-weight: bold; }
-.time-box p { font-size: 0.6rem; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
-
 /* AYAT SUCI */
 .quran-verse { position: relative; overflow: hidden; background-color: #ffffff; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10; }
 .door { position: absolute; top: 0; width: 50%; height: 100%; background-color: #1a2a3a; z-index: 3; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .door-left { left: 0; border-right: 1px solid #ffffff; }
 .door-right { right: 0; border-left: 1px solid #ffffff; }
-
 #quran-section.door-open .door-left { transform: translateX(-100%); }
 #quran-section.door-open .door-right { transform: translateX(100%); }
 
@@ -101,29 +117,11 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .map-responsive { overflow: hidden; padding-bottom: 56.25%; position: relative; height: 0; border-radius: 5px; }
 .map-responsive iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* ASYMMETRIC GRID GALLERY (2 Baris Rapi, Kotak Sempurna) */
+/* ASYMMETRIC GRID GALLERY */
 .gallery-grid-section { background-color: #ffffff; padding: 60px 15px; }
-.gallery-asymmetric-grid { 
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    grid-template-rows: repeat(2, 110px); 
-    gap: 10px; 
-    width: 100%; 
-}
-.gallery-grid-box { 
-    overflow: hidden; 
-    background-color: #fff; 
-    border: 1px solid #e2e2e2; 
-}
-.gallery-grid-box img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 0px !important; 
-    display: block;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
+.gallery-asymmetric-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 110px); gap: 10px; width: 100%; }
+.gallery-grid-box { overflow: hidden; background-color: #fff; border: 1px solid #e2e2e2; }
+.gallery-grid-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 0px !important; display: block; cursor: pointer; transition: transform 0.3s ease; }
 .gallery-grid-box img:hover { transform: scale(1.04); }
 .grid-large { grid-row: span 2; }
 .grid-small { grid-row: span 1; }
@@ -147,11 +145,6 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .btn-outline { background: transparent; border: 1px solid #1a2a3a; color: #1a2a3a; padding: 10px 25px; border-radius: 30px; width: 100%; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
 .btn-outline:hover { background: #1a2a3a; color: white; }
 
-/* SECTION VIDEO */
-.video-section { background-color: #ffffff; padding: 80px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.video-container { width: 100%; max-width: 350px; margin: 0 auto; border-radius: 5px; overflow: hidden; border: 1px solid #e2e2e2; background-color: #000; display: flex; justify-content: center; align-items: center; }
-.video-container video { width: 100%; display: block; object-fit: cover; }
-
 /* PENUTUP */
 .closing-section { background-color: #ffffff; padding: 80px 20px; }
 .closing-box { background: white; padding: 50px 30px; border-radius: 5px; border: 1px solid #e2e2e2; width: 100%; max-width: 380px; margin: 0 auto;}
@@ -160,23 +153,13 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .closing-signature h3 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; }
 .footer-bar { background: #1a2a3a; color: white; padding: 20px; text-align: center; font-size: 0.8rem; width: 100%; }
 
-/* NEW COVER SCREEN (Full Latar Foto & Efek Gelap Gradasi di Bawah) */
+/* COVER SCREEN UTAMA */
 .cover-screen { 
-    position: fixed; 
-    inset: 0; 
+    position: fixed; inset: 0; 
     background-image: linear-gradient(to bottom, rgba(26, 42, 58, 0.2), rgba(26, 42, 58, 0.85)), url('foto-utama.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 100; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: flex-end; 
-    padding-bottom: 60px;
-    left: 50%; 
-    transform: translateX(-50%); 
-    width: 100%; 
-    max-width: 450px; 
+    background-size: cover; background-position: center; z-index: 100; 
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end; 
+    padding-bottom: 60px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; 
     transition: opacity 0.8s ease, transform 0.8s ease; 
 }
 .cover-content { text-align: center; color: #ffffff; width: 100%; padding: 0 20px; }
@@ -184,11 +167,10 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #1a2a3a; fon
 .main-names-large { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #ffffff; margin-bottom: 30px; font-weight: normal; }
 .cover-content .guest-info p { font-size: 0.8rem; color: #ffffff; margin-bottom: 8px; opacity: 0.8; }
 .cover-content .guest-info h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #ffffff; margin-bottom: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
-
 #btn-buka { background: #ffffff; color: #1a2a3a; border: none; font-weight: 700; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 #btn-buka:hover { background: #e2e2e2; }
 
-/* LIGHTBOX & UTILITY */
+/* LIGHTBOX */
 .lightbox { position: fixed; inset: 0; background: rgba(26,42,58,0.95); z-index: 1000; display: none; justify-content: center; align-items: center; }
 .lightbox.show { display: flex; }
 .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 5px; }
